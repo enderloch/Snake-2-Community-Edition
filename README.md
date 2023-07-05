@@ -9,7 +9,7 @@ In order to create a release:
 
 First, have the zip downloaded.
 
-Then, use the template: Run the (executible or python file name) file (include "with Python 3.10 (Windows 64-bit)" if it's a python file).
+Then, use the template: Run the (python file name) file after installing python on the microsoft store, then pasting "pip install pygame" into command line.
 
 Go to releases, click draft a release.
 
