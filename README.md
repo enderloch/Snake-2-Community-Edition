@@ -1,6 +1,10 @@
 # Snake-2-Community-Edition
 A sequel to Snake, originally developed by DougDoug using ChatGPT. Now supported by the community, to be less glitchy and have more features!
 
+[Wiki Link](https://snake-2.fandom.com/wiki/Snake_2_Wiki)
+
+Download at your own risk!
+
 In every commit please include the following copyright agreement in the source code
 
     Snake 2 is a community supported game that is freely updated by anyone.
