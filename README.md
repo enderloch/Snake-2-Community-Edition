@@ -8,20 +8,35 @@ Download at your own risk!
 In order to create a release:
 
 First, have the zip downloaded.
+
 Then, use the template: Run the (executible or python file name) file (include "with Python 3.10 (Windows 64-bit)" if it's a python file).
+
 Go to releases, click draft a release.
+
 Paste the template and fill it out in the write section.
+
 Upload the .zip to the "attach binaries" box.
+
 Make the title using this scheme:
+
 Ex: v1.0.0
+
 v for version
+
 1 goes up for EXTREME CHANGES (must be approved)
+
 0 is for content updates
+
 0 is for patches
+
 v1.(content update).(patch version)
+
 Based on last update
+
 Goes like this v1.0.0 would go to v1.0.1, but if there was a new content update, it would reset the patch number, extreme update resets patch and content number.
+
 Make a tag with the same name as the release.
+
 Then just create the release.
 
 In every commit please include the following copyright agreement in the source code:
