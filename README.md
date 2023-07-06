@@ -7,6 +7,8 @@ Download at your own risk!
 
 In order to create a release:
 
+ALWAYS CHANGE THE CODE ON THE LATEST VERSION IN ORDER TO AVOID OVERWRITING FIXES FROM OLD VERSIONS
+
 First, have the zip downloaded.
 
 Then, use the template: Run the (python file name) file after installing python on the microsoft store, then pasting "pip install pygame" into command line.
