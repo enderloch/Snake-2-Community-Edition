@@ -46,7 +46,7 @@ for filename in microtransaction_files:
 
 # Function to play a random microtransaction sound
 def play_random_microtransaction_sound():
-    sound_file = random.choice(microtransaction_files)
+    sound_file = os.path.join(audio_folder, random.choice(microtransaction_files))
     pygame.mixer.music.load(sound_file)
     pygame.mixer.music.play()
 
