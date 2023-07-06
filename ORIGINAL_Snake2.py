@@ -10,7 +10,7 @@ import os
 # Determine if the DLC is activated
 DLC_ACTIVATED = random.random() < 0.25  # 20% chance of DLC being activated
 
-# Get current directory of path
+# Get current path directory of script
 PATH = os.path.dirname(__file__)
 
 # Initialize Pygame
