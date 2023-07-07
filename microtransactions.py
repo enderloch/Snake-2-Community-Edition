@@ -38,16 +38,11 @@ microtransaction_files = [
     "glob.mp3"
 ]
 
-microtransaction_sounds = []
-for filename in microtransaction_files:
-    file_path = os.path.join(audio_folder, filename)
-    sound = pygame.mixer.Sound(file_path)
-    microtransaction_sounds.append(sound)
-
 # Function to play a random microtransaction sound
 def play_random_microtransaction_sound():
-    sound_file = random.choice(microtransaction_sounds)
-    sound_file.play()
+    sound_file = os.path.join(audio_folder, random.choice(microtransaction_files))
+    pygame.mixer.music.load(sound_file)
+    pygame.mixer.music.play()
 
 # Function to show microtransaction window
 def show_microtransaction_window(screen):
