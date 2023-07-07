@@ -9,6 +9,7 @@ import math
 import os
 import sys
 import subprocess
+import screeninfo
 
 from pygame.locals import *
 
@@ -36,7 +37,7 @@ community=False
 # Set up the window
 window_width = 800
 window_height = 600
-window = pygame.display.set_mode((window_width, window_height))
+window = pygame.display.set_mode((window_width, window_height), pygame.RESIZABLE)
 pygame.display.set_caption("Main Menu")
 
 # Set up the colors
@@ -47,7 +48,7 @@ WHITE = (255, 255, 255)
 font = pygame.font.SysFont(None, 50)
 
 # Set up the menu options
-menu_options = ["Community", "Original","DLC"]
+menu_options = ["Community", "Original", "DLC"]
 selected_option = 0
 
 def run_game(file_name):
@@ -97,15 +98,15 @@ while True:
     if community or DLC_ACTIVATED:
         break
 
+# Get the primary display resolutions
+display = screeninfo.get_monitors()[0]
+screen_width, screen_height = display.width, display.height
 
 # Set screen dimensions
-screen_width = 1920
-screen_height = 1080
 resolution = (screen_width, screen_height)
-screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Snake RPG Game")
 
-flags = DOUBLEBUF
+flags = DOUBLEBUF | RESIZABLE
 screen = pygame.display.set_mode(resolution, flags, 16)
 
 if community:
@@ -113,7 +114,7 @@ if community:
     background_img = pygame.image.load(background_img_path).convert_alpha()
     background_img = pygame.transform.scale(background_img, (screen_width, screen_height))
 else:
-    background_img_path = os.path.join(image_folder, 'American_Flag.png')
+    background_img_path = os.path.join(image_folder, 'American Flag.png')
     background_img = pygame.image.load(background_img_path).convert_alpha()
     background_img = pygame.transform.scale(background_img, (screen_width, screen_height))
 
