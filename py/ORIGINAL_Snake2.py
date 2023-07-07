@@ -5,6 +5,21 @@ import random
 import microtransactions  # Import the microtransactions module
 import time
 import random
+import os
+
+from pygame.locals import *
+
+# Get the current script's file path
+current_path = os.path.dirname(__file__)
+
+# Specify the folder name where your sound files are located
+audio_folder = os.path.join(current_path, 'audio')
+
+# Specify the folder name where your images are located (neccesary to tell where pictures are on any persons pc)
+image_folder = os.path.join(current_path, 'images')
+
+# Specify the folder name where your font file is located
+font_folder = os.path.join(current_path, 'fonts')
 
 # Determine if the DLC is activated
 DLC_ACTIVATED = random.random() < 0.25  # 20% chance of DLC being activated
@@ -19,7 +34,8 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Snake RPG Game")
 
 # Load background image
-background_img = pygame.image.load("American Flag.png")
+background_img_path = os.path.join(image_folder, 'American Flag.png')
+background_img = pygame.image.load(background_img_path).convert_alpha()
 background_img = pygame.transform.scale(background_img, (screen_width, screen_height))
 
 # Set colors
@@ -27,8 +43,9 @@ snake_color = (0, 255, 0)
 food_color = (0, 255, 0)
 
 # Load Guy Fieri image for the snake
-snake_img = pygame.image.load("guy_fieri.png")
-snake_img = pygame.transform.scale(snake_img, (40, 40))  # Increase size to 40x40 pixels
+snake_img_path = os.path.join(image_folder, 'guy_fieri.png')
+snake_img = pygame.image.load(snake_img_path).convert_alpha()
+snake_img = pygame.transform.scale(snake_img, (40, 40))
 
 # Define snake properties
 snake_size = 40  # Increase size to match the image dimensions
@@ -58,10 +75,12 @@ score = 0
 font = pygame.font.Font(None, 36)
 
 # Load game over sound
-game_over_sound = pygame.mixer.Sound("Snake Snake Snake.wav")
+game_over_sound_path = os.path.join(audio_folder, 'Snake Snake Snake.wav')
+game_over_sound = pygame.mixer.Sound(game_over_sound_path)
 
-# Load level up sound
-level_up_sound = pygame.mixer.Sound("Minecraft Level Up.mp3")
+# Load the "level_up_sound" MP3 file
+level_up_sound_path = os.path.join(audio_folder, "Minecraft Level Up.mp3")
+level_up_sound = pygame.mixer.Sound(level_up_sound_path)
 
 # Define snake body
 snake_body = []
@@ -236,8 +255,10 @@ while not game_over:
         microtransactions.show_microtransaction_window(screen)
 
 # Define the credits
-credits_font_normal = pygame.font.Font("Roboto-Italic.ttf", 36)
-credits_font_bold = pygame.font.Font("Roboto-Bold.ttf", 36)
+credits_font_normal_path = os.path.join(font_folder, "Roboto-Italic.ttf")
+credits_font_normal = pygame.font.Font(credits_font_normal_path, 36)
+credits_font_bold_path = os.path.join(font_folder, "Roboto-Bold.ttf")
+credits_font_bold = pygame.font.Font(credits_font_bold_path, 36)
 credits_lines = [
     {"text": "SNAKE 2", "font": credits_font_bold},
     {"text": "Powered by Twitch Chat", "font": credits_font_normal},

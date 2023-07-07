@@ -7,6 +7,8 @@ import time
 import random
 import math
 import os
+import sys
+import subprocess
 
 from pygame.locals import *
 
@@ -22,14 +24,79 @@ image_folder = os.path.join(current_path, 'images')
 # Specify the folder name where your font file is located
 font_folder = os.path.join(current_path, 'fonts')
 
-# Initialize Pygame
-pygame.init()
-
-# Determine if the DLC is activated
-DLC_ACTIVATED = random.random() < 0.25  # 20% chance of DLC being activated
+# Specify the folder name where your game files are located
+game_folder = os.path.join(current_path, 'py')
 
 # Initialize Pygame
 pygame.init()
+
+DLC_ACTIVATED=False
+community=False
+
+# Set up the window
+window_width = 800
+window_height = 600
+window = pygame.display.set_mode((window_width, window_height))
+pygame.display.set_caption("Main Menu")
+
+# Set up the colors
+BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
+
+# Set up the font
+font = pygame.font.SysFont(None, 50)
+
+# Set up the menu options
+menu_options = ["Community", "Original","DLC"]
+selected_option = 0
+
+def run_game(file_name):
+    subprocess.Popen(["python", file_name])
+    pygame.quit()
+    sys.exit()
+
+# Main game loop
+while True:
+    # Handle events
+    for event in pygame.event.get():
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_UP:
+                selected_option = (selected_option - 1) % len(menu_options)
+            elif event.key == pygame.K_DOWN:
+                selected_option = (selected_option + 1) % len(menu_options)
+            elif event.key == pygame.K_RETURN:
+                # Perform action based on the selected option
+                if selected_option == 0:
+                    print("Community mode selected")
+                    community=True
+                    break
+                elif selected_option == 1:
+                    print("Original mode selected")
+                    game_file_path = os.path.join(game_folder, "ORIGINAL_Snake2.py")
+                    exec(open(game_file_path).read())
+                elif selected_option == 2:
+                    print("DLC mode selected")
+                    DLC_ACTIVATED = True
+                    break
+                    
+                    
+
+    # Clear the window
+    window.fill(WHITE)
+
+    # Draw the menu options
+    for i, option in enumerate(menu_options):
+        text = font.render(option, True, BLACK)
+        text_rect = text.get_rect(center=(window_width / 2, window_height / 2 + i * 50))
+        if i == selected_option:
+            pygame.draw.rect(window, BLACK, (text_rect.left - 10, text_rect.top - 10, text_rect.width + 20, text_rect.height + 20), 3)
+        window.blit(text, text_rect)
+
+    # Update the display
+    pygame.display.update()
+    if community or DLC_ACTIVATED:
+        break
+
 
 # Set screen dimensions
 screen_width = 1920
@@ -41,19 +108,29 @@ pygame.display.set_caption("Snake RPG Game")
 flags = DOUBLEBUF
 screen = pygame.display.set_mode(resolution, flags, 16)
 
-# Load background image
-background_img_path = os.path.join(image_folder, 'American Flag.png')
-background_img = pygame.image.load(background_img_path).convert_alpha()
-background_img = pygame.transform.scale(background_img, (screen_width, screen_height))
+if community:
+    background_img_path = os.path.join(image_folder, 'background.jpg')
+    background_img = pygame.image.load(background_img_path).convert_alpha()
+    background_img = pygame.transform.scale(background_img, (screen_width, screen_height))
+else:
+    background_img_path = os.path.join(image_folder, 'American_Flag.png')
+    background_img = pygame.image.load(background_img_path).convert_alpha()
+    background_img = pygame.transform.scale(background_img, (screen_width, screen_height))
+
 
 # Set colors
 snake_color = (0, 255, 0)
-food_color = (0, 255, 0)
+food_color = (0, 0, 255)
 
-# Load Guy Fieri image for the snake
-snake_img_path = os.path.join(image_folder, 'guy_fieri.png')
-snake_img = pygame.image.load(snake_img_path).convert_alpha()
-snake_img = pygame.transform.scale(snake_img, (40, 40))
+# Load image for the snake
+if community:
+    snake_img_path = os.path.join(image_folder, 'snake.webp')
+    snake_img = pygame.image.load(snake_img_path).convert_alpha()
+    snake_img = pygame.transform.scale(snake_img, (40, 40))
+else:
+    snake_img_path = os.path.join(image_folder, 'guy_fieri.png')
+    snake_img = pygame.image.load(snake_img_path).convert_alpha()
+    snake_img = pygame.transform.scale(snake_img, (40, 40))
 
 # Define snake properties
 snake_size = 40  # Increase size to match the image dimensions
@@ -294,11 +371,11 @@ while not game_over:
                 snake_body[i] = (prev_x + offset_x, prev_y + offset_y)
         #                                                                                            Note: This portion of the code is slightly problematic, open to being tweaked to fix the glitchy snake thing
 
-        # Check collision with snake body
-        for body_part in snake_body[ignore_segments:]:
-            if pygame.Rect(snake_x, snake_y, snake_size, snake_size).colliderect(
-                    pygame.Rect(body_part[0], body_part[1], snake_size, snake_size)):
-                game_over = True
+        # Check collision with snake body (removed for glitches)
+#        for body_part in snake_body[ignore_segments:]:
+#            if pygame.Rect(snake_x, snake_y, snake_size, snake_size).colliderect(
+#                    pygame.Rect(body_part[0], body_part[1], snake_size, snake_size)):
+#                game_over = True
 
         # Refresh the screen
         screen.blit(background_img, (0, 0))
