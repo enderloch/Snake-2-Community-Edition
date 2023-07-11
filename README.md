@@ -11,7 +11,7 @@ ALWAYS CHANGE THE CODE ON THE LATEST VERSION IN ORDER TO AVOID OVERWRITING FIXES
 
 First, have the zip downloaded.
 
-Then, use the template: Run the (python file name) file after installing python on the microsoft store, then pasting "pip install pygame" into command line.
+Then, use the template: Run the (python file name) file after installing python on the microsoft store, then pasting "pip install pygame" into command line, and also pasting "pip install screeninfo".
 
 Go to releases, click draft a release.
 
