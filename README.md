@@ -1,60 +1,67 @@
-# Snake-2-Community-Edition
-A sequel to Snake, originally developed by DougDoug using ChatGPT. Now supported by the community, to be less glitchy and have more features!
+# Snake 2 Community Edition
 
-[Official Wiki Link](https://snake-2.fandom.com/wiki/Snake_2_Wiki)
+A community-powered, enhanced sequel to Snake, originally crafted by DougDoug using ChatGPT. Embark on a journey with us to make the game less buggy and loaded with fresh features!
 
-Download at your own risk!
+**Important Links**
 
-In order to create a release:
+- **[Official Wiki](https://snake-2.fandom.com/wiki/Snake_2_Wiki)**
 
-ALWAYS CHANGE THE CODE ON THE LATEST VERSION IN ORDER TO AVOID OVERWRITING FIXES FROM OLD VERSIONS
+## Release Creation Process
 
-First, have the zip downloaded.
+Before proceeding, always ensure you're working with the latest version of the code to prevent overwriting fixes from previous versions. 
 
-Then, use the template: Run the (python file name) file after installing python on the microsoft store, then pasting "pip install pygame" into command line, and also pasting "pip install screeninfo".
+Follow the steps below to generate a new release:
 
-Go to releases, click draft a release.
+1. Download the project's zip file.
 
-Paste the template and fill it out in the write section.
+2. Execute the Python file within the zip. If you haven't installed Python yet, get it from the [Microsoft Store](https://www.microsoft.com/store/apps/9P7QFQMJRFP7). 
 
-Upload the .zip to the "attach binaries" box.
+3. Install the required libraries by pasting the following commands into your terminal:
 
-Make the title using this scheme:
+```shell
+pip install pygame
+pip install screeninfo
+```
 
-Ex: v1.0.0
+4. Navigate to the project's 'releases' page and click 'Draft a new release'.
 
-v for version
+5. Use the provided template, filling out the necessary details in the 'Write' section.
 
-1 goes up for EXTREME CHANGES (must be approved)
+6. Upload the project's zip file to the 'Attach binaries' section.
 
-0 is for content updates
+7. When titling your release, follow this convention:
 
-0 is for patches
+   `vX.Y.Z`
 
-v1.(content update).(patch version)
+   - `v`: Denotes 'version'
+   - `X`: Represents major updates. An increment in this number must be approved and signifies significant changes.
+   - `Y`: Denotes content updates
+   - `Z`: Corresponds to patches or bug fixes
 
-Based on last update
+For example, a jump from `v1.0.0` to `v1.0.1` indicates a patch release. A new content update resets the patch number, and a major update resets both the patch and content numbers.
 
-Goes like this v1.0.0 would go to v1.0.1, but if there was a new content update, it would reset the patch number, extreme update resets patch and content number.
+8. Tag the release with the same name as your release title.
 
-Make a tag with the same name as the release.
+9. Finally, publish the release!
 
-Then just create the release.
+Ensure that each commit includes the following copyright statement in the source code:
 
-In every commit please include the following copyright agreement in the source code:
+```plaintext
+Snake 2 is a community-supported game, freely updated by anyone.
+Copyright (C) 2023  The DougDoug Community
 
-    Snake 2 is a community supported game that is freely updated by anyone.
-    Copyright (C) 2023  The DougDoug Community
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+```
 
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+With your help, we can continue enhancing and expanding Snake 2 Community Edition!
